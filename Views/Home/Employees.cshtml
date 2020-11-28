@@ -1,0 +1,63 @@
+﻿@using ERP.BusinessObject
+@{
+    ViewData["Title"] = "Employees";
+    IEnumerable<EmployeeBO> listado = (IEnumerable<EmployeeBO>)ViewBag.Listado;
+}
+
+<h1>Mantenimiento de Empleados</h1>
+
+<form asp-action="Insertar">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" placeholder="Ingrese su nombre" id="txtNombre" name="nombre" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" placeholder="Ingrese su salario" id="txtSalario" name="salario" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <input type="number" placeholder="Ingrese su edad" id="txtEdad" name="edad" />
+        </div>
+        <div class="col-md-3">
+            <input type="number" placeholder="Ingrese su perfil" id="txtPerfil" name="perfil" />
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit">Enviar</button>
+    </div>
+
+</form>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Salario</th>
+            <th>Edad</th>
+            <th>Perfil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EmployeeBO item in listado)
+        {
+            <tr>
+                <td>@item._id</td>
+                <td>@item.nombre</td>
+                <td>@item.salario</td>
+                <td>@item.edad</td>
+                <td>
+                    <img src="@item.perfil" width="30px" height="30px" />
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+
